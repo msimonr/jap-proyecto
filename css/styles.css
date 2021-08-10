@@ -161,3 +161,11 @@ a.custom-card:hover {
     color: #15b485;
     font-size: 1.1em;
 }
+
+.form-ajuste {
+    margin: 0;
+}
+
+.inputGroup {
+    margin: 1em 0;
+}
