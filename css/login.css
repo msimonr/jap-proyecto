@@ -47,6 +47,6 @@ body {
     color: #229fbc;
     font-weight: bold;
     font-size: 2.5em;
-    margin: 1em;
+    /* margin: 1em; */
     text-shadow: 0.03em 0.03em #1c7a8f;
 }
