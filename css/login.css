@@ -1,1 +1,52 @@
 /*Entrega 1*/
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f8f9fa;
+}
+
+.signin {
+    width: 100%;
+    max-width: 330px;
+    padding: 3em 1em;
+    margin: auto;
+    border: 0.1em solid #229fbc;
+    border-radius: 0.5em;
+}
+
+.signin input {
+    padding: 1em;
+    margin: 1em 0;
+}
+
+.signin button {
+    background-color: #229fbc;
+    border: #17697c;
+}
+
+.signin button:hover {
+    background-color: #1ab8db;
+}
+
+.portada {
+    width: 30em;
+}
+
+.signin h1 {
+    text-transform: uppercase;
+    color: #229fbc;
+    font-weight: bold;
+    font-size: 2.5em;
+    margin: 1em;
+    text-shadow: 0.03em 0.03em #1c7a8f;
+}
