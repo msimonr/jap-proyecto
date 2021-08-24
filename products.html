@@ -26,14 +26,67 @@
         </div>
     </nav>
     <div class="container p-5">
-        <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-            <h4 class="alert-heading">¡A trabajar! :)</h4>
-            <p>Esta sección corresponde a: Entrega 1 (Fecha de entrega: 22/08/2021) y Entrega 2 (Fecha de entrega: 05/09/2021).</p>
-            <hr>
-            <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+
+        <!-- Agregado entrega 2 -->
+
+        <!-- Botones de orden -->
+        <div class="row">
+            <div class="col text-right">
+                <div class="btn-group btn-group-toggle mb-4" data-toggle="buttons">
+                    <label class="btn btn-light active">
+                        <input type="radio" name="order" autocomplete="off">
+                        <i class="fas fa-sort-amount-down">
+                        </i>
+                        $
+                    </label>
+                    <label class="btn btn-light">
+                        <input type="radio" name="order" autocomplete="off">
+                        <i class="fas fa-sort-amount-up">
+                        </i>
+                        $
+                    </label>
+                    <label class="btn btn-light">
+                        <input type="radio" name="order" autocomplete="off">
+                        <i class="fas fa-sort-amount-down">
+                        </i>
+                        Relevancia
+                    </label>
+                </div>
+            </div>
         </div>
+
+        <!-- Filtro por rango de precio -->
+        <div class="row justify-content-end">
+            <div class="col-md-6"></div>
+            <div class="col-md-6 container mb-2">
+                <div class="row container p-0 m-0">
+                    <div class="col mt-2">
+                        <p class="font-weight-normal text-right">Precio</p>
+                    </div>
+                    <div class="col mt-1">
+                        <input id="rangeFilterMin" type="number" class="form-control" placeholder="min.">
+                    </div>
+                    <div class="col mt-1"><input id="rangeFilterMax" type="number" class="form-control" placeholder="máx."></div>
+                    <div class="col-3 p-0">
+                        <div class="btn-group" role="group">
+                            <button id="filter" class="btn btn-primary btn-block m-1">Filtrar</button>
+                            <button id="clear" class="btn btn-danger btn-block btn-sm m-1">Limpiar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Agregado entrega 1 -->
-        <div class="list-group" id="product-list-container"></div>
+        <div class="row">
+            <div class="list-group" id="product-list-container"></div>
+        </div>
+
+
+
+    </div>
+
+
     </div>
     </div>
     <footer class="text-muted bg-light">

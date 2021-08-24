@@ -1,13 +1,24 @@
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
+var listaProductos = [];
 document.addEventListener("DOMContentLoaded", function(e) {
-    // Agregado entrega 1
-    getJSONData(PRODUCTS_URL).then(productos => {
-        prodData = productos.data;
-        let htmlContentToAppend = '';
-        for (prod of prodData) {
-            htmlContentToAppend += `
+
+    // Agregado entrega 1 || modificado en entrega 2
+    getJSONData(PRODUCTS_URL).then(resultObj => {
+        if (resultObj.status === "ok") {
+            prodData = resultObj.data;
+            showList(prodData);
+        }
+    });
+
+});
+
+// Funcion creada en entrega 2, codigo de entrega1
+function showList(prodData) {
+    let htmlContentToAppend = '';
+    for (prod of prodData) {
+        htmlContentToAppend += `
             <a href="product-info.html" class="list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-3">
@@ -24,7 +35,6 @@ document.addEventListener("DOMContentLoaded", function(e) {
                 </div>
             </a>
             `
-        }
-        document.getElementById('product-list-container').innerHTML = htmlContentToAppend;
-    });
-});
+    }
+    document.getElementById('product-list-container').innerHTML = htmlContentToAppend;
+}
