@@ -2,6 +2,7 @@
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 var listaProductos = [];
+
 document.addEventListener("DOMContentLoaded", function(e) {
 
     // Agregado entrega 1 || modificado en entrega 2
@@ -11,6 +12,9 @@ document.addEventListener("DOMContentLoaded", function(e) {
             showList(prodData);
         }
     });
+
+    //Botones a usar
+    
 
 });
 
