@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
 // Agregado Entrega1
 function login() {
-    let user = document.getElementById("inputEmail").value;
+    let user = document.getElementById("inputUser").value;
 
     //Guardar datos de sesion.
     sessionStorage.setItem('user', user);
