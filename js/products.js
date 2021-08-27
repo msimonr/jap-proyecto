@@ -8,6 +8,10 @@ const P_HIGH = 0;
 const P_LOW = 1;
 const P_REL = 2;
 
+var min = NaN;
+var max = NaN;
+var current = P_HIGH;
+
 document.addEventListener("DOMContentLoaded", function(e) {
 
     // Agregado entrega 1 || modificado en entrega 2
@@ -15,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         if (resultObj.status === "ok") {
             prodOriginales = resultObj.data;
             listaProductos = prodOriginales;
-            sortList(P_HIGH, listaProductos);
+            sortList(current, listaProductos);
             showList(listaProductos);
         }
     });
@@ -23,16 +27,19 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
     //Botones de orden
     $('#mayorPrecio').click(function() {
+        current = P_HIGH;
         sortList(P_HIGH, listaProductos);
         showList(listaProductos);
     });
 
     $('#menorPrecio').click(function() {
+        current = P_LOW;
         sortList(P_LOW, listaProductos);
         showList(listaProductos);
     });
 
     $('#mayorRelevancia').click(function() {
+        current = P_REL;
         sortList(P_REL, listaProductos);
         showList(listaProductos);
     });
@@ -40,38 +47,31 @@ document.addEventListener("DOMContentLoaded", function(e) {
     // Botones de filtrado
 
     $('#filter').click(function() {
-        let min = parseInt($('#rangeFilterMin').val());
-        let max = parseInt($('#rangeFilterMax').val());
-        console.log(min + ' : ' + max);
-        if (min !== NaN || max !== NaN) {
-            console.log('hola');
-            $('.producto').each(function() {
-                console.log($(this));
-                let precio = listaProductos.find(elem => elem.name === $(this).attr('id')).cost;
-                console.log(precio);
-                if ((min !== undefined && precio < min) || (max !== undefined && precio > max)) {
-                    $(this).hide();
-                } else {
-                    //mostrarlo.
-                    $(this).show();
-                }
-            }); //fin each
-        } //fin if undefined
+        min = parseInt($('#rangeFilterMin').val());
+        max = parseInt($('#rangeFilterMax').val());
+        sortList(current, listaProductos);
+        showList(listaProductos);
     }); //fin click.
 
     $('#clear').click(function() {
         $('#rangeFilterMin').val('');
         $('#rangeFilterMax').val('');
-        $('.producto').each(() => $(this).show());
+        max = NaN;
+        min = NaN;
+        listaProductos = prodOriginales;
+        sortList(current, listaProductos);
+        showList(listaProductos);
     });
-
 });
 
 // Funcion creada en entrega 2, codigo de entrega1
 function showList(prodData) {
     let htmlContentToAppend = '';
+    let filtro = isNaN(min) && isNaN(max);
     for (prod of prodData) {
-        htmlContentToAppend += `
+        //filtro dependiendo precio... (tarea2)
+        if (filtro || (!filtro && ((prod.cost >= min && prod.cost <= max) || (isNaN(min) && prod.cost <= max) || (isNaN(max) && prod.cost >= min)))) {
+            htmlContentToAppend += `
             <a href="product-info.html" class="list-group-item list-group-item-action producto" id="${prod.name}">
                 <div class="row">
                     <div class="col-3">
@@ -88,6 +88,7 @@ function showList(prodData) {
                 </div>
             </a>
             `
+        }
     }
     document.getElementById('product-list-container').innerHTML = htmlContentToAppend;
 }
