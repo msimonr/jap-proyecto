@@ -30,7 +30,15 @@
     <div class="container p-5">
 
         <!-- Agregado entrega 2 -->
-
+        <div class="row">
+            <div class="col-md-8"></div>
+            <div class="col-md-4">
+                <div class="input-group m-2">
+                    <input type="search" id="search" class="form-control" placeholder="Buscar">
+                    <button id="clearSearch" class="btn btn-danger btn-sm m-1">X</button>
+                </div>
+            </div>
+        </div>
         <!-- Botones de orden -->
         <div class="row">
             <div class="col text-right">
@@ -40,14 +48,14 @@
                         <input type="radio" name="order" autocomplete="off">
                         <i class="fas fa-sort-amount-down">
                         </i>
-                        $
+                        Mayor precio
                     </label>
 
                     <label id="menorPrecio" class="btn btn-light">
                         <input type="radio" name="order" autocomplete="off">
                         <i class="fas fa-sort-amount-up">
                         </i>
-                        $
+                        Menor precio
                     </label>
 
                     <label id="mayorRelevancia" class="btn btn-light">

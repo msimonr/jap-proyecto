@@ -45,8 +45,12 @@ var getJSONData = function(url) {
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e) {
     if (!window.location.pathname.endsWith('login.html')) {
-        $('nav > div').append(`<a class="py-2 d-none d-md-inline-block text-info text-bold user" href="#">¡Hola, ${sessionStorage.getItem('user')}!</a>`);
-        $('nav > div').append(`<a class="py-2 d-none d-md-inline-block text-ligth" id="cerrar" href="#">Cerrar sesión</a>`);
+        $('nav > div').append(`
+            <div>
+            <a class="py-2 d-none d-md-inline-block text-info text-bold user mr-2" href="#">¡Hola, ${sessionStorage.getItem('user')}!</a>
+            <a class="py-2 d-none d-md-inline-block text-ligth cerrar ml-2" id="cerrar" href="#">Cerrar sesión</a>
+            </div>
+            `);
         $('#cerrar').click(function() {
             sessionStorage.removeItem('user');
             location.reload();

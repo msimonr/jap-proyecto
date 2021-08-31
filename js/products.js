@@ -11,6 +11,8 @@ const P_REL = 2;
 var min = NaN;
 var max = NaN;
 var current = P_HIGH;
+var r = undefined;
+
 
 document.addEventListener("DOMContentLoaded", function(e) {
 
@@ -62,6 +64,26 @@ document.addEventListener("DOMContentLoaded", function(e) {
         sortList(current, listaProductos);
         showList(listaProductos);
     });
+
+    $('#search').keyup(function() {
+        //Armar regex
+        let inputSearch = $('#search').val().toLowerCase();
+        console.log(inputSearch);
+        if (inputSearch !== '') {
+            r = new RegExp(inputSearch.replaceAll(/\s/g, '\\s'));
+        } else {
+            r = undefined;
+        }
+        console.log(r);
+        showList(listaProductos);
+    });
+
+    $('#clearSearch').click(function() {
+        $('#search').val('');
+        r = undefined;
+        showList(listaProductos);
+    });
+
 });
 
 // Funcion creada en entrega 2, codigo de entrega1
@@ -70,7 +92,7 @@ function showList(prodData) {
     let filtro = isNaN(min) && isNaN(max);
     for (prod of prodData) {
         //filtro dependiendo precio... (tarea2)
-        if (filtro || (!filtro && ((prod.cost >= min && prod.cost <= max) || (isNaN(min) && prod.cost <= max) || (isNaN(max) && prod.cost >= min)))) {
+        if ((r === undefined || r.test(prod.name.toLowerCase())) && (filtro || (!filtro && ((prod.cost >= min && prod.cost <= max) || (isNaN(min) && prod.cost <= max) || (isNaN(max) && prod.cost >= min))))) {
             htmlContentToAppend += `
             <a href="product-info.html" class="list-group-item list-group-item-action producto" id="${prod.name}">
                 <div class="row">
