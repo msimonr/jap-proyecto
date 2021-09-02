@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         }
     });
 
-
+    //TAREA 2
     //Botones de orden
     $('#mayorPrecio').click(function() {
         current = P_HIGH;
@@ -92,7 +92,7 @@ function showList(prodData) {
     let filtro = isNaN(min) && isNaN(max);
     for (prod of prodData) {
         //filtro dependiendo precio... (tarea2)
-        if ((r === undefined || r.test(prod.name.toLowerCase())) && (filtro || (!filtro && ((prod.cost >= min && prod.cost <= max) || (isNaN(min) && prod.cost <= max) || (isNaN(max) && prod.cost >= min))))) {
+        if ((r === undefined || r.test(prod.name.toLowerCase()) || r.test(prod.description.toLowerCase())) && (filtro || (!filtro && ((prod.cost >= min && prod.cost <= max) || (isNaN(min) && prod.cost <= max) || (isNaN(max) && prod.cost >= min))))) {
             htmlContentToAppend += `
             <a href="product-info.html" class="list-group-item list-group-item-action producto" id="${prod.name}">
                 <div class="row">
