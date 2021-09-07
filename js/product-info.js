@@ -15,28 +15,45 @@ document.addEventListener("DOMContentLoaded", function(e) {
                         if (resul3.status === "ok") {
                             prodComments = resul3.data;
                             show(data, prodComments, prods);
+                            // Aca estoy seguro que cargo todo...
+
+                            $('.rating').click(function() {
+                                let index = $(this).attr('id');
+                                $('.selected').removeClass('selected');
+                                $(this).addClass('selected');
+                                $('.rating').each(function() {
+                                    if ($(this).attr('id') <= index) {
+                                        $(this).addClass('checked');
+                                    } else {
+                                        $(this).removeClass('checked')
+                                    }
+                                });
+                            });
+
+                            $('#btnComentar').click(function() {
+                                let usrComment = $('#userComment').val();
+                                if (usrComment === '') {
+                                    $('#warning').html('No puedes enviar un comentario vacío.');
+                                } else {
+                                    $('#warning').html('');
+                                    comentar(sessionStorage.getItem('user'), $('.selected').attr('id')[1], usrComment, new Date());
+                                    $('#userComment').val('');
+                                }
+                            });
+
+
+                            $('.secondary').click(function() {
+                                let aux = $('.principal').attr('src');
+                                $('.principal').attr('src', $(this).attr('src'))
+                                $(this).attr('src', aux);
+                            });
+
+                            //Fin get
                         }
                     });
                 }
             });
         }
-    });
-
-    // $('.rating').hover(function() {
-    //     $(this).addClass('checked')
-    // });
-
-    $('.rating').hover(function() {
-        let index = $(this).attr('id');
-        $('.rating').each(function() {
-            if ($(this).attr('id') <= index) {
-                $(this).addClass('checked');
-            }
-        });
-    }, function() {
-        $('.rating').each(function() {
-            $(this).removeClass('checked');
-        });
     });
 
 });
@@ -77,7 +94,7 @@ function show(info, prodComments, prods) {
             <p class="rating">${stars(com.score)}</p>
           </div>
           <div class="col-sm-4 text-right">
-            <p>${com.dateTime}</p>
+            <p>${(new Date(com.dateTime)).toLocaleDateString()}</p>
           </div>
           </div>
           <hr class="mt-0">
@@ -158,4 +175,23 @@ function stars(score) {
         star += `<span class="fa fa-star"></span>`
     }
     return star;
+}
+
+function comentar(user, score, msg, date) {
+    cmt = `<div class="col-sm-12 mt-3 comment">
+        <div class="row">
+          <div class="col-sm-4">
+          <p class="nameUsuario ml-3">${user}</p>
+          </div>
+          <div class="col-sm-4 text-left">
+            <p class="rating">${stars(score)}</p>
+          </div>
+          <div class="col-sm-4 text-right">
+            <p>${date.toLocaleDateString()}</p>
+          </div>
+          </div>
+          <hr class="mt-0">
+          <p>${msg}</p>
+        </div>`
+    $('#comentarios').append(cmt);
 }

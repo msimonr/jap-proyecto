@@ -231,3 +231,8 @@ a.custom-card:hover {
 .rating {
     cursor: pointer;
 }
+
+#warning {
+    color: red;
+    font-weight: bold;
+}

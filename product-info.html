@@ -36,17 +36,20 @@
     <div class="container" id="cajaComentarios">
         <div class="row">
             <div class="col-sm-12 text-center">
+                <p id="warning"></p>
                 <textarea class="comentarios" id="userComment" placeholder="Escribe un comentario..."></textarea>
             </div>
             <div class="col-sm-2"></div>
             <div class="col-sm-4 text-center">
-                <span class="fa fa-star rating" id="s1"></span>
+                <span class="fa fa-star rating checked selected" id="s1"></span>
                 <span class="fa fa-star rating" id="s2"></span>
                 <span class="fa fa-star rating" id="s3"></span>
                 <span class="fa fa-star rating" id="s4"></span>
                 <span class="fa fa-star rating" id="s5"></span>
             </div>
-            <div class="col-sm-4 text-center"><button class="btnComentar">Comentar</button></div>
+            <div class="col-sm-4 text-center">
+                <input type="submit" id="btnComentar" value="Comentar">
+            </div>
             <div class="col-sm-2"></div>
         </div>
     </div>
