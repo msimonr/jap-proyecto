@@ -223,3 +223,11 @@ a.custom-card:hover {
 .comprar:hover {
     background-color: #15b485;
 }
+
+.comentarios {
+    width: 50em;
+}
+
+.rating {
+    cursor: pointer;
+}

@@ -22,6 +22,23 @@ document.addEventListener("DOMContentLoaded", function(e) {
         }
     });
 
+    // $('.rating').hover(function() {
+    //     $(this).addClass('checked')
+    // });
+
+    $('.rating').hover(function() {
+        let index = $(this).attr('id');
+        $('.rating').each(function() {
+            if ($(this).attr('id') <= index) {
+                $(this).addClass('checked');
+            }
+        });
+    }, function() {
+        $('.rating').each(function() {
+            $(this).removeClass('checked');
+        });
+    });
+
 });
 
 
@@ -54,10 +71,10 @@ function show(info, prodComments, prods) {
         <div class="col-sm-12 mt-3 comment">
         <div class="row">
           <div class="col-sm-4">
-          <p class="nameUsuario">${com.user}</p>
+          <p class="nameUsuario ml-3">${com.user}</p>
           </div>
           <div class="col-sm-4 text-left">
-            <p class="rating">${com.score}</p>
+            <p class="rating">${stars(com.score)}</p>
           </div>
           <div class="col-sm-4 text-right">
             <p>${com.dateTime}</p>
@@ -121,13 +138,24 @@ function show(info, prodComments, prods) {
         </div>
         <!-- row relacionados -->
         <hr>
-        <div class="row">
+        <div class="row" id="comentarios">
         <div class="col-sm-12">
           <h3>Comentarios</h3>
         </div>
-        </div>
         ${comments}
+        </div>
         <hr>
     `
     $('#infoProd').html(html);
+}
+
+function stars(score) {
+    let star = ``;
+    for (let i = 0; i < score; i++) {
+        star += `<span class="fa fa-star checked"></span>`;
+    }
+    for (let i = 0; i < 5 - score; i++) {
+        star += `<span class="fa fa-star"></span>`
+    }
+    return star;
 }
