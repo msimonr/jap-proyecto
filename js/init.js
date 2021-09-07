@@ -44,6 +44,7 @@ var getJSONData = function(url) {
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(e) {
+    showSpinner;
     if (!window.location.pathname.endsWith('login.html')) {
         $('nav > div').append(`
             <div>
@@ -56,4 +57,5 @@ document.addEventListener("DOMContentLoaded", function(e) {
             location.reload();
         });
     }
+    hideSpinner;
 });
