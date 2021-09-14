@@ -83,6 +83,11 @@ function show(info, prodComments, prods) {
         `
     }
     let comments = ``;
+    cmtUsers = sessionStorage.getItem('comments');
+    console.log(cmtUsers);
+    if (cmtUsers !== null) {
+        prodComments = prodComments.concat(JSON.parse(cmtUsers));
+    }
     for (com of prodComments) {
         comments += `
         <div class="col-sm-12 mt-3 comment">
@@ -160,6 +165,7 @@ function show(info, prodComments, prods) {
           <h3>Comentarios</h3>
         </div>
         ${comments}
+        <span id="usrComments"></span>
         </div>
         <hr>
     `
@@ -177,21 +183,24 @@ function stars(score) {
     return star;
 }
 
-function comentar(user, score, msg, date) {
-    cmt = `<div class="col-sm-12 mt-3 comment">
-        <div class="row">
-          <div class="col-sm-4">
-          <p class="nameUsuario ml-3">${user}</p>
-          </div>
-          <div class="col-sm-4 text-left">
-            <p class="rating">${stars(score)}</p>
-          </div>
-          <div class="col-sm-4 text-right">
-            <p>${date.toLocaleDateString()}</p>
-          </div>
-          </div>
-          <hr class="mt-0">
-          <p>${msg}</p>
-        </div>`
-    $('#comentarios').append(cmt);
+function comentar(userC, scoreC, msg, date) {
+    let cmt = {
+        score: scoreC,
+        description: msg,
+        user: userC,
+        dateTime: date.toString()
+    };
+    let arr = [];
+    comments = sessionStorage.getItem('comments')
+    if (comments === null) {
+        arr.push(cmt);
+        arr = JSON.stringify(arr);
+        sessionStorage.setItem('comments', arr);
+    } else {
+        arr = JSON.parse(comments);
+        arr.push(cmt);
+        arr = JSON.stringify(arr);
+        sessionStorage.setItem('comments', arr);
+    }
+    location.reload();
 }
