@@ -14,8 +14,8 @@ document.addEventListener("DOMContentLoaded", function(e) {
                     getJSONData(PRODUCT_INFO_COMMENTS_URL).then(resul3 => {
                         if (resul3.status === "ok") {
                             prodComments = resul3.data;
+
                             show(data, prodComments, prods);
-                            // Aca estoy seguro que cargo todo...
 
                             $('.rating').click(function() {
                                 let index = $(this).attr('id');
@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                                     $('#warning').html('No puedes enviar un comentario vacío.');
                                 } else {
                                     $('#warning').html('');
+                                    //Se utiliza el id del la estrella con clase selected para saber el puntaje.
                                     comentar(sessionStorage.getItem('user'), $('.selected').attr('id')[1], usrComment, new Date());
                                     $('#userComment').val('');
                                 }
@@ -58,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
 
 });
 
-
+//Muestra el producto, comentario, etc.
 function show(info, prodComments, prods) {
 
     let img = ``;
@@ -183,6 +184,8 @@ function stars(score) {
     return star;
 }
 
+
+//Comentario de usuario loggeado.
 function comentar(userC, scoreC, msg, date) {
     let cmt = {
         score: scoreC,
