@@ -48,8 +48,16 @@ document.addEventListener("DOMContentLoaded", function(e) {
     if (!window.location.pathname.endsWith('login.html')) {
         $('nav > div').append(`
             <div>
-            <a class="py-2 d-none d-md-inline-block text-info text-bold user mr-2" href="#">¡Hola, ${sessionStorage.getItem('user')}!</a>
-            <a class="py-2 d-none d-md-inline-block text-ligth cerrar ml-2" id="cerrar" href="#">Cerrar sesión</a>
+                <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ¡Hola, ${sessionStorage.getItem('user')}!
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="cart.html">Ver carrito</a>
+                    <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+                    <a class="dropdown-item" id="cerrar" href="#">Cerrar sesión</a>
+                </div>
+                </div>
             </div>
             `);
         $('#cerrar').click(function() {
