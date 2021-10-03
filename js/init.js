@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
             `);
         $('#cerrar').click(function() {
             sessionStorage.removeItem('user');
-            location.reload();
+            location.href = 'login.html';
         });
     }
     hideSpinner;
