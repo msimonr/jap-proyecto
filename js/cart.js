@@ -34,7 +34,7 @@ function showCarrito(cart) {
 function update(event) {
     dataProd = document.getElementsByClassName(event.target.dataset.class);
     // act subtotal
-    if (parseInt(dataProd[3].getElementsByTagName('input')[0].value) === 0) {
+    if (parseInt(dataProd[3].getElementsByTagName('input')[0].value) <= 0) {
         dataProd[3].getElementsByTagName('input')[0].value = 1;
     }
     let subtotal = parseInt(dataProd[2].getElementsByClassName('cost')[0].innerHTML) * parseInt(dataProd[3].getElementsByTagName('input')[0].value);
