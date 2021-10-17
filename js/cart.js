@@ -37,7 +37,7 @@ function update(event) {
     if (parseInt(dataProd[3].getElementsByTagName('input')[0].value) <= 0) {
         dataProd[3].getElementsByTagName('input')[0].value = 1;
     }
-    let subtotal = parseInt(dataProd[2].getElementsByClassName('cost')[0].innerHTML) * parseInt(dataProd[3].getElementsByTagName('input')[0].value);
+    let subtotal = parseFloat(dataProd[2].getElementsByClassName('cost')[0].innerHTML) * parseInt(dataProd[3].getElementsByTagName('input')[0].value);
     let elem = dataProd[4].getElementsByClassName('subTotal')[0];
     elem.innerHTML = subtotal;
     elem.dataset.subtotal = subtotal;
@@ -53,9 +53,9 @@ function resumenUpdate() {
     for (elem of subtotalProds) {
         if (elem.dataset.currency === 'USD') {
             console.log(elem.dataset.subtotal);
-            subtotal += USD * parseInt(elem.dataset.subtotal);
+            subtotal += USD * parseFloat(elem.dataset.subtotal);
         } else {
-            subtotal += parseInt(elem.dataset.subtotal);
+            subtotal += parseFloat(elem.dataset.subtotal);
         }
     }
     //Set subtotal
