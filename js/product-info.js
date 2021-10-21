@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
                                 } else {
                                     $('#warning').html('');
                                     //Se utiliza el id del la estrella con clase selected para saber el puntaje.
-                                    comentar(sessionStorage.getItem('user'), $('.selected').attr('id')[1], usrComment, new Date());
+                                    comentar(localStorage.getItem('user'), $('.selected').attr('id')[1], usrComment, new Date());
                                     $('#userComment').val('');
                                 }
                             });
@@ -84,7 +84,7 @@ function show(info, prodComments, prods) {
         `
     }
     let comments = ``;
-    cmtUsers = sessionStorage.getItem('comments');
+    cmtUsers = localStorage.getItem('comments');
     console.log(cmtUsers);
     if (cmtUsers !== null) {
         prodComments = prodComments.concat(JSON.parse(cmtUsers));
@@ -194,16 +194,16 @@ function comentar(userC, scoreC, msg, date) {
         dateTime: date.toString()
     };
     let arr = [];
-    comments = sessionStorage.getItem('comments')
+    comments = localStorage.getItem('comments')
     if (comments === null) {
         arr.push(cmt);
         arr = JSON.stringify(arr);
-        sessionStorage.setItem('comments', arr);
+        localStorage.setItem('comments', arr);
     } else {
         arr = JSON.parse(comments);
         arr.push(cmt);
         arr = JSON.stringify(arr);
-        sessionStorage.setItem('comments', arr);
+        localStorage.setItem('comments', arr);
     }
     location.reload();
 }

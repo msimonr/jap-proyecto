@@ -10,5 +10,5 @@ function login() {
     let user = document.getElementById("inputUser").value;
 
     //Guardar datos de sesion.
-    sessionStorage.setItem('user', user);
+    localStorage.setItem('user', user);
 }

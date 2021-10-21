@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
             <div>
                 <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                ¡Hola, ${sessionStorage.getItem('user')}!
+                ¡Hola, ${localStorage.getItem('user')}!
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="cart.html">Ver carrito</a>
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
             </div>
             `);
         $('#cerrar').click(function() {
-            sessionStorage.removeItem('user');
+            localStorage.removeItem('user');
             location.href = 'login.html';
         });
     }
