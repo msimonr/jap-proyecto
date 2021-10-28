@@ -11,4 +11,17 @@ function login() {
 
     //Guardar datos de sesion.
     localStorage.setItem('user', user);
+
+    //Guardar datos de usuario (si no existe)
+    if (!localStorage.getItem(user + 'userData')) {
+        let dataJson = {
+            nombre: '',
+            edad: '',
+            mail: '',
+            tel: '',
+            imgPerfil: 'img/default.jpg'
+        }
+        localStorage.setItem(localStorage.getItem('user') + 'userData', JSON.stringify(dataJson));
+    }
+
 }

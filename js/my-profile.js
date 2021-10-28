@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         console.log('No null');
         showData();
     } else {
-        console.log('null');
+
     }
 
 });
@@ -20,7 +20,8 @@ function saveChanges() {
         nombre: data[0].value,
         edad: data[1].value,
         mail: data[2].value,
-        tel: data[3].value
+        tel: data[3].value,
+        imgPerfil: data[4].src
     }
     localStorage.setItem(localStorage.getItem('user') + 'userData', JSON.stringify(dataJson));
     showData();
@@ -32,6 +33,29 @@ function showData() {
     console.log(localStorage.getItem(localStorage.getItem('user') + 'userData'));
     let data = JSON.parse(localStorage.getItem(localStorage.getItem('user') + 'userData'));
     for (key in data) {
-        document.getElementById(key).value = data[key];
+        console.log(typeof(key));
+        console.log(key);
+        if (key !== 'imgPerfil') {
+            document.getElementById(key).value = data[key];
+        } else {
+            document.getElementById(key).src = data[key]
+        }
+    }
+}
+
+function previewImage() {
+    let preview = document.getElementById('imgPerfil');
+    console.log(preview);
+    let file = document.getElementById('imgInput').files[0];
+    console.log('hola previo');
+    let reader = new FileReader();
+
+    if (file) {
+        reader.readAsDataURL(file);
+        console.log('hola file');
+    }
+    reader.onloadend = function() {
+        preview.src = reader.result;
+
     }
 }

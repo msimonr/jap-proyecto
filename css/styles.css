@@ -236,3 +236,9 @@ a.custom-card:hover {
     color: red;
     font-weight: bold;
 }
+
+.profileIMG {
+    width: 200px;
+    height: 200px;
+    border-radius: 10%;
+}
