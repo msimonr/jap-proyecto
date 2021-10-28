@@ -242,3 +242,9 @@ a.custom-card:hover {
     height: 200px;
     border-radius: 10%;
 }
+
+.imgIcon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+}

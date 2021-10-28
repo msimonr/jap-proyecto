@@ -47,11 +47,12 @@ var getJSONData = function(url) {
 document.addEventListener("DOMContentLoaded", function(e) {
     showSpinner;
     if (!window.location.pathname.endsWith('login.html')) {
-        $('nav > div').append(`
+        $('nav > div').append(` 
             <div>
                 <div class="dropdown">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 ¡Hola, ${localStorage.getItem('user')}!
+                <img src="${JSON.parse(localStorage.getItem(localStorage.getItem('user')+'userData'))['imgPerfil']}" class="imgIcon">
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="cart.html">Ver carrito</a>

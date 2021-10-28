@@ -25,7 +25,7 @@ function saveChanges() {
     }
     localStorage.setItem(localStorage.getItem('user') + 'userData', JSON.stringify(dataJson));
     showData();
-    return false;
+    //return false;
 }
 
 function showData() {
