@@ -94,21 +94,17 @@ function showList(prodData) {
         //filtro dependiendo precio... (tarea2)
         if ((r === undefined || r.test(prod.name.toLowerCase()) || r.test(prod.description.toLowerCase())) && (filtro || (!filtro && ((prod.cost >= min && prod.cost <= max) || (isNaN(min) && prod.cost <= max) || (isNaN(max) && prod.cost >= min))))) {
             htmlContentToAppend += `
-            <a href="product-info.html" class="list-group-item list-group-item-action producto" id="${prod.name}">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="` + prod.imgSrc + `" alt="` + prod.description + `" class="img-thumbnail">
+            <div class="col-md-6">
+               <a href="product-info.html" class="card md-4 custom-card" id="${prod.name}">
+                          <img class="card-img-top img-thumbnail" src="${prod.imgSrc}">
+                          <h4 class="mb-1">` + prod.name + `</h4>
+                          <div class="card-body">
+                         <small class="text-muted">` + prod.soldCount + ` vendidos</small>
+                         <p class="mb-1">` + prod.description + `</p>
+                      <p class="mb-1 precio">` + prod.currency + ` ` + prod.cost + `</p>
                     </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">` + prod.name + `</h4>
-                            <small class="text-muted">` + prod.soldCount + ` vendidos</small>
-                        </div>
-                        <p class="mb-1">` + prod.description + `</p>
-                        <p class="mb-1 precio">` + prod.currency + ` ` + prod.cost + `</p>      
-                    </div>
-                </div>
-            </a>
+                </a>
+            </div>
             `
         }
     }
