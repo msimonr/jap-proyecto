@@ -64,5 +64,12 @@ function resumenUpdate() {
     pEnvio = subtotal * ENVIOS[envio.id] / 100;
     document.getElementById('env').innerHTML = pEnvio;
     //Set total
-    document.getElementById('total').innerHTML = subtotal + pEnvio;
+    total = subtotal + pEnvio;
+    document.getElementById('total').innerHTML = total;
+    document.getElementById('totalModal').innerHTML = total;
+}
+
+function pagar() {
+
+    return false;
 }
