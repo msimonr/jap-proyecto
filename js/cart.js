@@ -84,8 +84,9 @@ function pagar(nameForm) {
     let form = document.getElementById(nameForm);
     let error = '';
     let warning = document.getElementById('warning');
-    for (let input of form.getElementsByTagName('input')) {
+    for (let input of document.getElementsByClassName(nameForm + 'req')) {
         if (input.value === '') {
+            console.log(input.dataset.campo);
             error += '<p> Complete el campo ' + input.dataset.campo + '</p>';
         }
     }
@@ -94,8 +95,9 @@ function pagar(nameForm) {
         form.reset();
         console.log('exito');
         localStorage.setItem('compraExitosa', 'true');
-        return true;
+        // return true;
     } else {
+        warning.hidden = false;
         return false;
     }
 }
