@@ -11,6 +11,17 @@ document.addEventListener("DOMContentLoaded", function(e) {
             document.getElementById('cotizacion').innerHTML = USD;
         }
     });
+    if (localStorage.getItem('compraExitosa') === 'true') {
+        localStorage.removeItem('compraExitosa');
+        document.getElementById('compraExitosa').innerHTML = `
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>¡Todo salio bien!</strong> Su compra se realizo exitosamente.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        `;
+    }
 });
 
 
@@ -69,7 +80,22 @@ function resumenUpdate() {
     document.getElementById('totalModal').innerHTML = total;
 }
 
-function pagar() {
-
-    return false;
+function pagar(nameForm) {
+    let form = document.getElementById(nameForm);
+    let error = '';
+    let warning = document.getElementById('warning');
+    for (let input of form.getElementsByTagName('input')) {
+        if (input.value === '') {
+            error += '<p> Complete el campo ' + input.dataset.campo + '</p>';
+        }
+    }
+    warning.innerHTML = error;
+    if (error === '') {
+        form.reset();
+        console.log('exito');
+        localStorage.setItem('compraExitosa', 'true');
+        return true;
+    } else {
+        return false;
+    }
 }
